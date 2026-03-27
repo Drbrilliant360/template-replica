@@ -16,8 +16,9 @@ const AboutPage = () => (
     <Navbar />
     <section className="bg-primary py-20 text-center">
       <div className="container mx-auto">
+        <p className="text-xs font-semibold tracking-[0.3em] uppercase text-secondary mb-3">About the Firm</p>
         <h1 className="text-4xl md:text-5xl font-bold !text-primary-foreground mb-4">Who We Are</h1>
-        <p className="!text-primary-foreground/80 max-w-xl mx-auto">Learn about our firm, values, and commitment to supporting foreign investors in Tanzania.</p>
+        <p className="!text-primary-foreground/70 max-w-xl mx-auto">Learn about our firm, values, and commitment to supporting foreign investors in Tanzania.</p>
       </div>
     </section>
 
@@ -39,12 +40,12 @@ const AboutPage = () => (
       <section className="section-padding section-bg">
         <div className="container mx-auto grid md:grid-cols-2 gap-12 max-w-4xl">
           <div>
-            <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">Our Vision</p>
+            <p className="text-xs font-semibold tracking-[0.3em] uppercase text-secondary mb-3">Our Vision</p>
             <h2 className="text-2xl font-bold mb-4">Vision</h2>
             <p className="text-body leading-relaxed">To be a trusted advisory partner for international stakeholders seeking structured and compliant entry into the Tanzanian market.</p>
           </div>
           <div>
-            <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">Our Mission</p>
+            <p className="text-xs font-semibold tracking-[0.3em] uppercase text-secondary mb-3">Our Mission</p>
             <h2 className="text-2xl font-bold mb-4">Mission</h2>
             <p className="text-body leading-relaxed">To simplify regulatory processes and provide clear, professional advisory support that enables foreign investors to operate with confidence in Tanzania.</p>
           </div>
@@ -55,13 +56,15 @@ const AboutPage = () => (
     <FadeInSection>
       <section className="section-padding">
         <div className="container mx-auto text-center mb-16">
-          <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">What We Stand For</p>
+          <p className="text-xs font-semibold tracking-[0.3em] uppercase text-secondary mb-3">What We Stand For</p>
           <h2 className="text-3xl font-bold">Core Values</h2>
         </div>
         <div className="container mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {values.map((v, i) => (
-            <div key={i} className="bg-section-bg p-6 rounded-sm text-center border border-border">
-              <v.icon className="h-8 w-8 mx-auto mb-4 text-primary stroke-[1.5]" />
+            <div key={i} className="bg-section-bg p-6 rounded-sm text-center border border-border group hover:shadow-lg hover:border-secondary/40 hover:-translate-y-1 transition-all duration-300 cursor-default">
+              <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
+                <v.icon className="h-6 w-6 text-primary group-hover:text-secondary-foreground stroke-[1.5] transition-colors duration-300" />
+              </div>
               <h3 className="text-sm font-semibold mb-2">{v.title}</h3>
               <p className="text-xs text-body leading-relaxed">{v.desc}</p>
             </div>
@@ -73,7 +76,7 @@ const AboutPage = () => (
     <FadeInSection>
       <section className="section-padding section-bg">
         <div className="container mx-auto text-center max-w-2xl">
-          <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">How We Work</p>
+          <p className="text-xs font-semibold tracking-[0.3em] uppercase text-secondary mb-3">How We Work</p>
           <h2 className="text-3xl font-bold mb-6">Operating Philosophy</h2>
           <p className="text-xl font-heading text-heading italic">
             "Clear Structure. Clear Communication. Sustainable Compliance."
