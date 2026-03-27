@@ -2,6 +2,8 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
 import OptimizedImage from "@/components/OptimizedImage";
+import SEOHead from "@/components/SEOHead";
+import JsonLd, { breadcrumbSchema } from "@/components/JsonLd";
 import { Shield, Eye, FileCheck, Users, Heart, Target, TrendingUp, Award, Globe, CheckCircle } from "lucide-react";
 import aboutTeam from "@/assets/about-team.jpg";
 import aboutHandshake from "@/assets/about-handshake.jpg";
