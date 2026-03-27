@@ -46,9 +46,8 @@ const Navbar = () => {
       <TopBar />
       <nav className={`sticky top-0 z-50 bg-background transition-shadow duration-300 ${scrolled ? "shadow-md" : "border-b border-border"}`}>
         <div className="container mx-auto flex items-center justify-between py-4">
-          <Link to="/" className="flex flex-col leading-tight">
-            <span className="font-heading text-xl font-bold text-heading">Tanzania Advisory</span>
-            <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-secondary">Partners</span>
+          <Link to="/" className="flex items-center">
+            <img src={logo} alt="Tanzania Advisory Partners" className="h-12 w-auto" />
           </Link>
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
