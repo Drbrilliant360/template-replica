@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ArrowRight, CalendarCheck } from "lucide-react";
 import heroImage from "@/assets/hero-tanzania.jpg";
 
 const HeroSection = () => (
@@ -18,14 +19,16 @@ const HeroSection = () => (
         <div className="flex flex-wrap gap-4">
           <Link
             to="/services"
-            className="inline-block bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:brightness-110 transition-all rounded-sm"
+            className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 rounded-sm"
           >
             Get Started
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
           <Link
             to="/contact"
-            className="inline-block border-2 border-primary-foreground !text-primary-foreground px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:bg-primary-foreground/10 transition-all rounded-sm"
+            className="group inline-flex items-center gap-2 border-2 border-primary-foreground !text-primary-foreground px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:bg-primary-foreground/10 hover:shadow-lg transition-all duration-300 rounded-sm"
           >
+            <CalendarCheck className="h-4 w-4" />
             Book Consultation
           </Link>
         </div>

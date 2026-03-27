@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Mail, CalendarCheck } from "lucide-react";
 
 const CtaBanner = () => (
   <section className="bg-primary section-padding text-center">
@@ -14,14 +15,16 @@ const CtaBanner = () => (
       <div className="flex flex-wrap justify-center gap-4">
         <Link
           to="/contact"
-          className="inline-block bg-primary-foreground text-primary px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-95 transition-all rounded-sm"
+          className="group inline-flex items-center gap-2 bg-primary-foreground text-primary px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-95 hover:shadow-lg transition-all duration-300 rounded-sm"
         >
+          <Mail className="h-4 w-4" />
           Contact Us
         </Link>
         <Link
           to="/contact"
-          className="inline-block border-2 border-primary-foreground !text-primary-foreground px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:bg-primary-foreground/10 transition-all rounded-sm"
+          className="group inline-flex items-center gap-2 border-2 border-primary-foreground !text-primary-foreground px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:bg-primary-foreground/10 hover:shadow-lg transition-all duration-300 rounded-sm"
         >
+          <CalendarCheck className="h-4 w-4" />
           Schedule Consultation
         </Link>
       </div>

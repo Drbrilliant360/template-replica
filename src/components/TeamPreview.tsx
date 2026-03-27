@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ArrowRight, Users } from "lucide-react";
 
 const TeamPreview = () => (
   <section className="section-padding">
@@ -10,9 +11,11 @@ const TeamPreview = () => (
       </p>
       <Link
         to="/team"
-        className="inline-block border-2 border-primary text-primary px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:bg-primary hover:text-primary-foreground transition-all rounded-sm"
+        className="group inline-flex items-center gap-2 border-2 border-primary text-primary px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:bg-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 rounded-sm"
       >
+        <Users className="h-4 w-4" />
         Meet Our Team
+        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
       </Link>
     </div>
   </section>

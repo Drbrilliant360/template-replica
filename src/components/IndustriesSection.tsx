@@ -16,8 +16,10 @@ const IndustriesSection = () => (
     </div>
     <div className="container mx-auto flex flex-wrap justify-center gap-6">
       {industries.map((ind, i) => (
-        <div key={i} className="flex items-center gap-3 bg-section-bg px-6 py-4 rounded-sm border border-border">
-          <ind.icon className="h-6 w-6 text-primary stroke-[1.5]" />
+        <div key={i} className="group flex items-center gap-3 bg-section-bg px-6 py-4 rounded-sm border border-border hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-default">
+          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-all duration-300">
+            <ind.icon className="h-5 w-5 text-primary group-hover:text-primary-foreground stroke-[1.5] transition-colors duration-300" />
+          </div>
           <span className="text-sm font-semibold text-heading">{ind.title}</span>
         </div>
       ))}
