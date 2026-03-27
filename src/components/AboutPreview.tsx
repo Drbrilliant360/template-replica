@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import aboutHandshake from "@/assets/about-handshake.jpg";
+import OptimizedImage from "@/components/OptimizedImage";
 
 const AboutPreview = () => (
   <section className="section-padding section-bg">
@@ -23,7 +24,7 @@ const AboutPreview = () => (
         </Link>
       </div>
       <div className="space-y-4">
-        <img src={aboutHandshake} alt="Business partnership in Tanzania" className="w-full rounded-sm shadow-lg" loading="lazy" width={1280} height={720} />
+        <OptimizedImage src={aboutHandshake} alt="Business partnership in Tanzania" className="w-full rounded-sm shadow-lg" width={1280} height={720} />
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {[
             { val: "10+", label: "Service Areas" },
