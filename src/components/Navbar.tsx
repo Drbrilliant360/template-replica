@@ -16,14 +16,14 @@ const TopBar = () => (
     <div className="container mx-auto flex items-center justify-between py-2 text-xs">
       <div className="flex items-center gap-6">
         <span className="flex items-center gap-2">
-          <Phone className="h-3 w-3" /> +255 123 456 789
+          <Phone className="h-3 w-3 text-secondary" /> +255 123 456 789
         </span>
         <span className="hidden md:flex items-center gap-2">
-          <Mail className="h-3 w-3" /> info@tanzaniaadvisory.co.tz
+          <Mail className="h-3 w-3 text-secondary" /> info@tanzaniaadvisory.co.tz
         </span>
       </div>
       <span className="hidden sm:flex items-center gap-2">
-        <MapPin className="h-3 w-3" /> Dar es Salaam, Tanzania
+        <MapPin className="h-3 w-3 text-secondary" /> Dar es Salaam, Tanzania
       </span>
     </div>
   </div>
@@ -47,7 +47,7 @@ const Navbar = () => {
         <div className="container mx-auto flex items-center justify-between py-4">
           <Link to="/" className="flex flex-col leading-tight">
             <span className="font-heading text-xl font-bold text-heading">Tanzania Advisory</span>
-            <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-primary">Partners</span>
+            <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-secondary">Partners</span>
           </Link>
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -55,7 +55,7 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path}
                 className={`text-xs font-semibold tracking-wider uppercase transition-colors ${
-                  location.pathname === link.path ? "text-primary" : "text-heading hover:text-primary"
+                  location.pathname === link.path ? "text-secondary" : "text-heading hover:text-secondary"
                 }`}
               >
                 {link.label}
@@ -64,7 +64,7 @@ const Navbar = () => {
           </div>
           <Link
             to="/contact"
-            className="hidden lg:inline-block bg-primary text-primary-foreground px-5 py-2.5 text-xs font-semibold tracking-wider uppercase hover:brightness-110 transition-all rounded-sm"
+            className="hidden lg:inline-block bg-secondary text-secondary-foreground px-5 py-2.5 text-xs font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-secondary/30 transition-all duration-300 rounded-sm"
           >
             Book Consultation
           </Link>
@@ -79,7 +79,7 @@ const Navbar = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="text-sm font-semibold text-heading hover:text-primary transition-colors"
+                  className="text-sm font-semibold text-heading hover:text-secondary transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}

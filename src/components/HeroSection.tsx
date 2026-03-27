@@ -4,7 +4,7 @@ import heroImage from "@/assets/hero-tanzania.jpg";
 
 const HeroSection = () => (
   <section className="relative min-h-[85vh] flex items-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${heroImage})` }}>
-    <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/50 to-transparent" />
+    <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/60 to-transparent" />
     <div className="container mx-auto relative z-10">
       <div className="max-w-2xl">
         <p className="text-xs font-semibold tracking-[0.3em] uppercase text-secondary mb-4">Tanzania Advisory Partners</p>
@@ -19,7 +19,7 @@ const HeroSection = () => (
         <div className="flex flex-wrap gap-4">
           <Link
             to="/services"
-            className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 rounded-sm"
+            className="group inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-secondary/30 transition-all duration-300 rounded-sm"
           >
             Get Started
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
