@@ -12,14 +12,14 @@ const clients = [
 const WhoWeWorkWith = () => (
   <section className="section-padding section-bg">
     <div className="container mx-auto text-center mb-16">
-      <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">Our Clients</p>
+      <p className="text-xs font-semibold tracking-[0.3em] uppercase text-secondary mb-3">Our Clients</p>
       <h2 className="text-3xl md:text-4xl font-bold mb-3">Who We Work With</h2>
     </div>
     <div className="container mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
       {clients.map((c, i) => (
-        <div key={i} className="bg-background p-8 rounded-sm text-center border border-border hover:shadow-xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 group cursor-default">
-          <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-            <c.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground stroke-[1.5] transition-colors duration-300" />
+        <div key={i} className="bg-background p-8 rounded-sm text-center border border-border hover:shadow-xl hover:border-secondary/40 hover:-translate-y-1 transition-all duration-300 group cursor-default">
+          <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
+            <c.icon className="h-7 w-7 text-primary group-hover:text-secondary-foreground stroke-[1.5] transition-colors duration-300" />
           </div>
           <h3 className="text-base font-semibold mb-2">{c.title}</h3>
           <p className="text-xs text-body leading-relaxed">{c.desc}</p>

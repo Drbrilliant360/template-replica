@@ -4,7 +4,7 @@ import { ArrowRight, Users } from "lucide-react";
 const TeamPreview = () => (
   <section className="section-padding">
     <div className="container mx-auto text-center max-w-2xl">
-      <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">Our People</p>
+      <p className="text-xs font-semibold tracking-[0.3em] uppercase text-secondary mb-3">Our People</p>
       <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Team</h2>
       <p className="text-body leading-relaxed mb-8">
         We operate through a focused advisory structure supported by licensed professionals including legal experts and regulatory specialists.

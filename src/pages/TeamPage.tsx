@@ -2,14 +2,16 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const TeamPage = () => (
   <div className="min-h-screen">
     <Navbar />
     <section className="bg-primary py-20 text-center">
       <div className="container mx-auto">
+        <p className="text-xs font-semibold tracking-[0.3em] uppercase text-secondary mb-3">Our People</p>
         <h1 className="text-4xl md:text-5xl font-bold !text-primary-foreground mb-4">Our Team</h1>
-        <p className="!text-primary-foreground/80 max-w-xl mx-auto">A focused advisory structure supported by licensed professionals.</p>
+        <p className="!text-primary-foreground/70 max-w-xl mx-auto">A focused advisory structure supported by licensed professionals.</p>
       </div>
     </section>
 
@@ -28,9 +30,10 @@ const TeamPage = () => (
           </p>
           <Link
             to="/contact"
-            className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 rounded-sm"
+            className="group inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-secondary/30 transition-all duration-300 rounded-sm"
           >
             Get In Touch
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
       </section>
