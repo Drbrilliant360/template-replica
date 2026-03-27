@@ -1,18 +1,30 @@
+import { Link } from "react-router-dom";
+
 const CtaBanner = () => (
-  <section className="bg-foreground section-padding text-center">
+  <section className="bg-primary section-padding text-center">
     <div className="container mx-auto">
-      <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-4">STUNNING WEBSITES</p>
-      <h2 className="text-3xl md:text-5xl font-bold !text-primary-foreground leading-tight mb-8">
-        Create cool website quickly
+      <h2 className="text-3xl md:text-4xl font-bold !text-primary-foreground leading-tight mb-4">
+        Ready to Enter the Tanzanian Market
         <br />
-        for your clients.
+        with Confidence?
       </h2>
-      <a
-        href="#contact"
-        className="inline-block border-2 border-primary text-primary px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:bg-primary hover:text-primary-foreground transition-all"
-      >
-        Contact Us
-      </a>
+      <p className="text-base !text-primary-foreground/80 mb-8 max-w-xl mx-auto">
+        Get structured advisory support for your regulatory, immigration, and business needs in Tanzania.
+      </p>
+      <div className="flex flex-wrap justify-center gap-4">
+        <Link
+          to="/contact"
+          className="inline-block bg-primary-foreground text-primary px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-95 transition-all rounded-sm"
+        >
+          Contact Us
+        </Link>
+        <Link
+          to="/contact"
+          className="inline-block border-2 border-primary-foreground !text-primary-foreground px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:bg-primary-foreground/10 transition-all rounded-sm"
+        >
+          Schedule Consultation
+        </Link>
+      </div>
     </div>
   </section>
 );

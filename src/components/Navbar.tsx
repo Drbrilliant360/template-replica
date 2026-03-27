@@ -1,26 +1,30 @@
 import { useState, useEffect } from "react";
-import { Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Menu, X } from "lucide-react";
+import { Phone, MapPin, Mail, Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
-const navLinks = ["HOME", "ABOUT", "SERVICE", "PROJECTS", "TEAM", "PRICES", "NEWS", "CONTACT"];
+const navLinks = [
+  { label: "Home", path: "/" },
+  { label: "Who We Are", path: "/about" },
+  { label: "Our Services", path: "/services" },
+  { label: "Who We Work With", path: "/clients" },
+  { label: "Team", path: "/team" },
+  { label: "Contact", path: "/contact" },
+];
 
 const TopBar = () => (
-  <div className="bg-section-bg border-b border-border">
-    <div className="container mx-auto flex items-center justify-between py-2 text-sm">
+  <div className="bg-primary text-primary-foreground">
+    <div className="container mx-auto flex items-center justify-between py-2 text-xs">
       <div className="flex items-center gap-6">
-        <span className="flex items-center gap-2 text-body">
-          <Phone className="h-3 w-3 text-primary" /> +1 (234) 567-890
+        <span className="flex items-center gap-2">
+          <Phone className="h-3 w-3" /> +255 123 456 789
         </span>
-        <span className="hidden md:flex items-center gap-2 text-body">
-          <MapPin className="h-3 w-3 text-primary" /> 228 Park Ave S, New York, NY 10003
+        <span className="hidden md:flex items-center gap-2">
+          <Mail className="h-3 w-3" /> info@tanzaniaadvisory.co.tz
         </span>
       </div>
-      <div className="flex items-center gap-3">
-        {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
-          <a key={i} href="#" className="text-body hover:text-primary transition-colors">
-            <Icon className="h-3.5 w-3.5" />
-          </a>
-        ))}
-      </div>
+      <span className="hidden sm:flex items-center gap-2">
+        <MapPin className="h-3 w-3" /> Dar es Salaam, Tanzania
+      </span>
     </div>
   </div>
 );
@@ -28,9 +32,10 @@ const TopBar = () => (
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -38,24 +43,31 @@ const Navbar = () => {
   return (
     <>
       <TopBar />
-      <nav className={`sticky top-0 z-50 bg-background transition-shadow duration-300 ${scrolled ? "shadow-md" : ""}`}>
+      <nav className={`sticky top-0 z-50 bg-background transition-shadow duration-300 ${scrolled ? "shadow-md" : "border-b border-border"}`}>
         <div className="container mx-auto flex items-center justify-between py-4">
-          <a href="#" className="font-heading text-2xl font-bold text-heading">
-            innovatik.
-          </a>
+          <Link to="/" className="flex flex-col leading-tight">
+            <span className="font-heading text-xl font-bold text-heading">Tanzania Advisory</span>
+            <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-primary">Partners</span>
+          </Link>
           <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link, i) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className={`text-xs font-semibold tracking-wider transition-colors ${
-                  i === 0 ? "text-primary" : "text-heading hover:text-primary"
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`text-xs font-semibold tracking-wider uppercase transition-colors ${
+                  location.pathname === link.path ? "text-primary" : "text-heading hover:text-primary"
                 }`}
               >
-                {link}
-              </a>
+                {link.label}
+              </Link>
             ))}
           </div>
+          <Link
+            to="/contact"
+            className="hidden lg:inline-block bg-primary text-primary-foreground px-5 py-2.5 text-xs font-semibold tracking-wider uppercase hover:brightness-110 transition-all rounded-sm"
+          >
+            Book Consultation
+          </Link>
           <button className="lg:hidden text-heading" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -64,14 +76,14 @@ const Navbar = () => {
           <div className="lg:hidden border-t border-border bg-background">
             <div className="container mx-auto py-4 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
+                <Link
+                  key={link.path}
+                  to={link.path}
                   className="text-sm font-semibold text-heading hover:text-primary transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
-                  {link}
-                </a>
+                  {link.label}
+                </Link>
               ))}
             </div>
           </div>
