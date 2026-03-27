@@ -1,31 +1,27 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
-import FeaturesSection from "@/components/FeaturesSection";
-import PortfolioSection from "@/components/PortfolioSection";
+import AboutPreview from "@/components/AboutPreview";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import WhoWeWorkWith from "@/components/WhoWeWorkWith";
+import IndustriesSection from "@/components/IndustriesSection";
+import PrinciplesSection from "@/components/PrinciplesSection";
+import TeamPreview from "@/components/TeamPreview";
 import CtaBanner from "@/components/CtaBanner";
-import AboutSection from "@/components/AboutSection";
-import TeamSection from "@/components/TeamSection";
-import PricingSection from "@/components/PricingSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import BlogSection from "@/components/BlogSection";
-import StatsSection from "@/components/StatsSection";
 import FooterSection from "@/components/FooterSection";
 
 const Index = () => (
   <div className="min-h-screen">
     <Navbar />
     <HeroSection />
+    <AboutPreview />
     <ServicesSection />
-    <FeaturesSection />
-    <PortfolioSection />
+    <WhyChooseUs />
+    <WhoWeWorkWith />
+    <IndustriesSection />
+    <PrinciplesSection />
+    <TeamPreview />
     <CtaBanner />
-    <AboutSection />
-    <TeamSection />
-    <PricingSection />
-    <TestimonialsSection />
-    <BlogSection />
-    <StatsSection />
     <FooterSection />
   </div>
 );
