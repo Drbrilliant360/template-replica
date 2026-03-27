@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { Mail, CalendarCheck } from "lucide-react";
+import ctaBg from "@/assets/cta-bg.jpg";
 
 const CtaBanner = () => (
-  <section className="bg-primary section-padding text-center">
-    <div className="container mx-auto">
+  <section className="relative section-padding text-center overflow-hidden">
+    <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${ctaBg})` }} />
+    <div className="absolute inset-0 bg-primary/85" />
+    <div className="container mx-auto relative z-10">
       <h2 className="text-3xl md:text-4xl font-bold !text-primary-foreground leading-tight mb-4">
         Ready to Enter the Tanzanian Market
         <br />
