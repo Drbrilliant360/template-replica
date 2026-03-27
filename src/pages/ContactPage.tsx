@@ -153,6 +153,7 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEOHead title="Contact Us" description="Get in touch with Tanzania Advisory Partners. Schedule a consultation for regulatory, immigration, and business advisory services in Tanzania." path="/contact" />
       <Navbar />
       <section className="bg-primary py-16 sm:py-20 text-center">
         <div className="container mx-auto px-4">
