@@ -10,9 +10,17 @@ import TeamPreview from "@/components/TeamPreview";
 import CtaBanner from "@/components/CtaBanner";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
+import SEOHead from "@/components/SEOHead";
+import JsonLd, { organizationSchema } from "@/components/JsonLd";
 
 const Index = () => (
   <div className="min-h-screen">
+    <SEOHead
+      title="Tanzania Advisory Partners | Regulatory & Investment Advisory"
+      description="Structured advisory and coordination services for investors, businesses, and expatriates operating in Tanzania. Clarity in Regulation. Confidence in Market Entry."
+      path="/"
+    />
+    <JsonLd data={organizationSchema} />
     <Navbar />
     <HeroSection />
     <FadeInSection><AboutPreview /></FadeInSection>
