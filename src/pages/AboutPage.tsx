@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
+import FadeInSection from "@/components/FadeInSection";
 import { Shield, Eye, FileCheck, Users, Heart } from "lucide-react";
 
 const values = [
@@ -20,58 +21,66 @@ const AboutPage = () => (
       </div>
     </section>
 
-    <section className="section-padding">
-      <div className="container mx-auto max-w-3xl">
-        <h2 className="text-3xl font-bold mb-6">Company Overview</h2>
-        <p className="text-body leading-relaxed mb-4">
-          Tanzania Advisory Partners is a boutique advisory firm providing regulatory, immigration, and corporate coordination support for foreign investors and organizations operating in Tanzania.
-        </p>
-        <p className="text-body leading-relaxed mb-4">
-          We bridge the gap between international business standards and Tanzanian regulatory requirements, providing structured guidance through every stage of market entry and ongoing operations.
-        </p>
-      </div>
-    </section>
-
-    <section className="section-padding section-bg">
-      <div className="container mx-auto grid md:grid-cols-2 gap-12 max-w-4xl">
-        <div>
-          <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">Our Vision</p>
-          <h2 className="text-2xl font-bold mb-4">Vision</h2>
-          <p className="text-body leading-relaxed">To be a trusted advisory partner for international stakeholders seeking structured and compliant entry into the Tanzanian market.</p>
+    <FadeInSection>
+      <section className="section-padding">
+        <div className="container mx-auto max-w-3xl">
+          <h2 className="text-3xl font-bold mb-6">Company Overview</h2>
+          <p className="text-body leading-relaxed mb-4">
+            Tanzania Advisory Partners is a boutique advisory firm providing regulatory, immigration, and corporate coordination support for foreign investors and organizations operating in Tanzania.
+          </p>
+          <p className="text-body leading-relaxed mb-4">
+            We bridge the gap between international business standards and Tanzanian regulatory requirements, providing structured guidance through every stage of market entry and ongoing operations.
+          </p>
         </div>
-        <div>
-          <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">Our Mission</p>
-          <h2 className="text-2xl font-bold mb-4">Mission</h2>
-          <p className="text-body leading-relaxed">To simplify regulatory processes and provide clear, professional advisory support that enables foreign investors to operate with confidence in Tanzania.</p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </FadeInSection>
 
-    <section className="section-padding">
-      <div className="container mx-auto text-center mb-16">
-        <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">What We Stand For</p>
-        <h2 className="text-3xl font-bold">Core Values</h2>
-      </div>
-      <div className="container mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-        {values.map((v, i) => (
-          <div key={i} className="bg-section-bg p-6 rounded-sm text-center border border-border">
-            <v.icon className="h-8 w-8 mx-auto mb-4 text-primary stroke-[1.5]" />
-            <h3 className="text-sm font-semibold mb-2">{v.title}</h3>
-            <p className="text-xs text-body leading-relaxed">{v.desc}</p>
+    <FadeInSection>
+      <section className="section-padding section-bg">
+        <div className="container mx-auto grid md:grid-cols-2 gap-12 max-w-4xl">
+          <div>
+            <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">Our Vision</p>
+            <h2 className="text-2xl font-bold mb-4">Vision</h2>
+            <p className="text-body leading-relaxed">To be a trusted advisory partner for international stakeholders seeking structured and compliant entry into the Tanzanian market.</p>
           </div>
-        ))}
-      </div>
-    </section>
+          <div>
+            <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">Our Mission</p>
+            <h2 className="text-2xl font-bold mb-4">Mission</h2>
+            <p className="text-body leading-relaxed">To simplify regulatory processes and provide clear, professional advisory support that enables foreign investors to operate with confidence in Tanzania.</p>
+          </div>
+        </div>
+      </section>
+    </FadeInSection>
 
-    <section className="section-padding section-bg">
-      <div className="container mx-auto text-center max-w-2xl">
-        <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">How We Work</p>
-        <h2 className="text-3xl font-bold mb-6">Operating Philosophy</h2>
-        <p className="text-xl font-heading text-heading italic">
-          "Clear Structure. Clear Communication. Sustainable Compliance."
-        </p>
-      </div>
-    </section>
+    <FadeInSection>
+      <section className="section-padding">
+        <div className="container mx-auto text-center mb-16">
+          <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">What We Stand For</p>
+          <h2 className="text-3xl font-bold">Core Values</h2>
+        </div>
+        <div className="container mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {values.map((v, i) => (
+            <div key={i} className="bg-section-bg p-6 rounded-sm text-center border border-border">
+              <v.icon className="h-8 w-8 mx-auto mb-4 text-primary stroke-[1.5]" />
+              <h3 className="text-sm font-semibold mb-2">{v.title}</h3>
+              <p className="text-xs text-body leading-relaxed">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </FadeInSection>
+
+    <FadeInSection>
+      <section className="section-padding section-bg">
+        <div className="container mx-auto text-center max-w-2xl">
+          <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">How We Work</p>
+          <h2 className="text-3xl font-bold mb-6">Operating Philosophy</h2>
+          <p className="text-xl font-heading text-heading italic">
+            "Clear Structure. Clear Communication. Sustainable Compliance."
+          </p>
+        </div>
+      </section>
+    </FadeInSection>
 
     <FooterSection />
   </div>
