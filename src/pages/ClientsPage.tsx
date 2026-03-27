@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
+import FadeInSection from "@/components/FadeInSection";
 import { Link } from "react-router-dom";
 import { Briefcase, Building, Store, Heart, Users } from "lucide-react";
 
@@ -44,26 +45,28 @@ const ClientsPage = () => (
     <section className="section-padding">
       <div className="container mx-auto space-y-10">
         {clientTypes.map((c, i) => (
-          <div key={i} className="grid md:grid-cols-3 gap-8 p-8 rounded-sm border border-border bg-background">
-            <div className="md:col-span-2">
-              <div className="flex items-center gap-3 mb-4">
-                <c.icon className="h-8 w-8 text-primary stroke-[1.5]" />
-                <h2 className="text-xl font-bold">{c.title}</h2>
+          <FadeInSection key={i}>
+            <div className="grid md:grid-cols-3 gap-8 p-8 rounded-sm border border-border bg-background">
+              <div className="md:col-span-2">
+                <div className="flex items-center gap-3 mb-4">
+                  <c.icon className="h-8 w-8 text-primary stroke-[1.5]" />
+                  <h2 className="text-xl font-bold">{c.title}</h2>
+                </div>
+                <p className="text-body leading-relaxed">{c.desc}</p>
               </div>
-              <p className="text-body leading-relaxed">{c.desc}</p>
+              <div>
+                <h4 className="text-sm font-semibold mb-3 text-heading">Common Use Cases</h4>
+                <ul className="space-y-2">
+                  {c.useCases.map((u, j) => (
+                    <li key={j} className="flex items-center gap-2 text-sm text-body">
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0" />
+                      {u}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div>
-              <h4 className="text-sm font-semibold mb-3 text-heading">Common Use Cases</h4>
-              <ul className="space-y-2">
-                {c.useCases.map((u, j) => (
-                  <li key={j} className="flex items-center gap-2 text-sm text-body">
-                    <span className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0" />
-                    {u}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          </FadeInSection>
         ))}
       </div>
     </section>
@@ -73,7 +76,7 @@ const ClientsPage = () => (
         <h2 className="text-3xl font-bold !text-primary-foreground mb-6">See how we can support your goals</h2>
         <Link
           to="/contact"
-          className="inline-block bg-primary-foreground text-primary px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-95 transition-all rounded-sm"
+          className="group inline-flex items-center gap-2 bg-primary-foreground text-primary px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-95 hover:shadow-lg transition-all duration-300 rounded-sm"
         >
           Contact Us
         </Link>

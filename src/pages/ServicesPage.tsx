@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
+import FadeInSection from "@/components/FadeInSection";
 import { Link } from "react-router-dom";
 import { Shield, Building2, FileCheck, Globe, Home, Package, AlertTriangle, Users, Plane, Crown, Star } from "lucide-react";
 
@@ -74,31 +75,33 @@ const ServicesPage = () => (
     <section className="section-padding">
       <div className="container mx-auto space-y-12">
         {services.map((s, i) => (
-          <div key={i} className={`grid md:grid-cols-2 gap-8 items-start p-8 rounded-sm border border-border ${i % 2 === 0 ? "bg-background" : "bg-section-bg"}`}>
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <s.icon className="h-8 w-8 text-primary stroke-[1.5]" />
-                <h2 className="text-xl font-bold">{s.title}</h2>
+          <FadeInSection key={i}>
+            <div className={`grid md:grid-cols-2 gap-8 items-start p-8 rounded-sm border border-border ${i % 2 === 0 ? "bg-background" : "bg-section-bg"}`}>
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <s.icon className="h-8 w-8 text-primary stroke-[1.5]" />
+                  <h2 className="text-xl font-bold">{s.title}</h2>
+                </div>
+                <p className="text-body leading-relaxed">{s.desc}</p>
               </div>
-              <p className="text-body leading-relaxed">{s.desc}</p>
+              <div>
+                <ul className="space-y-2 mb-6">
+                  {s.points.map((p, j) => (
+                    <li key={j} className="flex items-center gap-2 text-sm text-body">
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  to="/contact"
+                  className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-2.5 text-xs font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 rounded-sm"
+                >
+                  Request Advisory Support
+                </Link>
+              </div>
             </div>
-            <div>
-              <ul className="space-y-2 mb-6">
-                {s.points.map((p, j) => (
-                  <li key={j} className="flex items-center gap-2 text-sm text-body">
-                    <span className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                to="/contact"
-                className="inline-block bg-primary text-primary-foreground px-6 py-2.5 text-xs font-semibold tracking-wider uppercase hover:brightness-110 transition-all rounded-sm"
-              >
-                Request Advisory Support
-              </Link>
-            </div>
-          </div>
+          </FadeInSection>
         ))}
       </div>
     </section>
