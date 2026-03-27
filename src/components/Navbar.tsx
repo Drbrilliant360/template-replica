@@ -104,8 +104,15 @@ const Navbar = () => {
                 </Link>
               ))}
               <Link
+                to="/company-profile"
+                className="mt-3 inline-flex items-center justify-center gap-2 border-2 border-secondary text-secondary px-5 py-3 text-sm font-semibold tracking-wider uppercase text-center hover:bg-secondary hover:text-secondary-foreground transition-all duration-300 rounded-sm"
+                onClick={() => setMobileOpen(false)}
+              >
+                View Profile
+              </Link>
+              <Link
                 to="/contact"
-                className="mt-3 bg-secondary text-secondary-foreground px-5 py-3 text-sm font-semibold tracking-wider uppercase text-center hover:brightness-110 transition-all duration-300 rounded-sm"
+                className="bg-secondary text-secondary-foreground px-5 py-3 text-sm font-semibold tracking-wider uppercase text-center hover:brightness-110 transition-all duration-300 rounded-sm"
                 onClick={() => setMobileOpen(false)}
               >
                 Book Consultation
