@@ -14,16 +14,17 @@ const navLinks = [
 
 const TopBar = () => (
   <div className="bg-primary text-primary-foreground">
-    <div className="container mx-auto flex items-center justify-between py-2 text-xs">
-      <div className="flex items-center gap-6">
-        <span className="flex items-center gap-2">
-          <Phone className="h-3 w-3 text-secondary" /> +255 123 456 789
-        </span>
-        <span className="hidden md:flex items-center gap-2">
+    <div className="container mx-auto flex items-center justify-between px-4 py-2 text-xs">
+      <div className="flex items-center gap-4 md:gap-6">
+        <a href="tel:+255123456789" className="flex items-center gap-1.5">
+          <Phone className="h-3 w-3 text-secondary" />
+          <span className="hidden xs:inline">+255 123 456 789</span>
+        </a>
+        <a href="mailto:info@tanzaniaadvisory.co.tz" className="hidden md:flex items-center gap-1.5">
           <Mail className="h-3 w-3 text-secondary" /> info@tanzaniaadvisory.co.tz
-        </span>
+        </a>
       </div>
-      <span className="hidden sm:flex items-center gap-2">
+      <span className="hidden sm:flex items-center gap-1.5">
         <MapPin className="h-3 w-3 text-secondary" /> Dar es Salaam, Tanzania
       </span>
     </div>
@@ -41,15 +42,20 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
   return (
     <>
       <TopBar />
       <nav className={`sticky top-0 z-50 bg-background transition-shadow duration-300 ${scrolled ? "shadow-md" : "border-b border-border"}`}>
-        <div className="container mx-auto flex items-center justify-between py-4">
+        <div className="container mx-auto flex items-center justify-between px-4 py-3 md:py-4">
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Tanzania Advisory Partners" className="h-12 w-auto" />
+            <img src={logo} alt="Tanzania Advisory Partners" className="h-10 md:h-12 w-auto" />
           </Link>
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -68,23 +74,34 @@ const Navbar = () => {
           >
             Book Consultation
           </Link>
-          <button className="lg:hidden text-heading" onClick={() => setMobileOpen(!mobileOpen)}>
+          <button className="lg:hidden text-heading p-1" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
         {mobileOpen && (
-          <div className="lg:hidden border-t border-border bg-background">
-            <div className="container mx-auto py-4 flex flex-col gap-4">
+          <div className="lg:hidden border-t border-border bg-background animate-in slide-in-from-top-2 duration-200">
+            <div className="container mx-auto px-4 py-5 flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="text-sm font-semibold text-heading hover:text-secondary transition-colors"
+                  className={`text-sm font-semibold py-2.5 px-3 rounded-sm transition-colors ${
+                    location.pathname === link.path
+                      ? "text-secondary bg-secondary/10"
+                      : "text-heading hover:text-secondary hover:bg-secondary/5"
+                  }`}
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
                 </Link>
               ))}
+              <Link
+                to="/contact"
+                className="mt-3 bg-secondary text-secondary-foreground px-5 py-3 text-sm font-semibold tracking-wider uppercase text-center hover:brightness-110 transition-all duration-300 rounded-sm"
+                onClick={() => setMobileOpen(false)}
+              >
+                Book Consultation
+              </Link>
             </div>
           </div>
         )}
