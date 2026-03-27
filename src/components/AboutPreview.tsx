@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import aboutHandshake from "@/assets/about-handshake.jpg";
 
 const AboutPreview = () => (
   <section className="section-padding section-bg">
@@ -21,18 +22,21 @@ const AboutPreview = () => (
           <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Link>
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        {[
-          { val: "10+", label: "Service Areas" },
-          { val: "100%", label: "Compliance Focus" },
-          { val: "5+", label: "Industry Sectors" },
-          { val: "24/7", label: "Client Support" },
-        ].map((s, i) => (
-          <div key={i} className="bg-background p-6 rounded-sm shadow-sm border border-border hover:shadow-md hover:border-secondary/40 transition-all duration-300">
-            <span className="text-3xl font-heading font-bold text-secondary">{s.val}</span>
-            <p className="text-sm text-body mt-2">{s.label}</p>
-          </div>
-        ))}
+      <div className="space-y-4">
+        <img src={aboutHandshake} alt="Business partnership in Tanzania" className="w-full rounded-sm shadow-lg" loading="lazy" width={1280} height={720} />
+        <div className="grid grid-cols-2 gap-4">
+          {[
+            { val: "10+", label: "Service Areas" },
+            { val: "100%", label: "Compliance Focus" },
+            { val: "5+", label: "Industry Sectors" },
+            { val: "24/7", label: "Client Support" },
+          ].map((s, i) => (
+            <div key={i} className="bg-background p-5 rounded-sm shadow-sm border border-border hover:shadow-md hover:border-secondary/40 transition-all duration-300">
+              <span className="text-2xl font-heading font-bold text-secondary">{s.val}</span>
+              <p className="text-xs text-body mt-1">{s.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
