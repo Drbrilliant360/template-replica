@@ -1,5 +1,6 @@
 import { Send, Phone, Mail, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo.jpg";
 
 const FooterSection = () => (
   <footer className="bg-primary pt-16 pb-8">
