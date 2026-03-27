@@ -68,12 +68,20 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-          <Link
-            to="/contact"
-            className="hidden lg:inline-block bg-secondary text-secondary-foreground px-5 py-2.5 text-xs font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-secondary/30 transition-all duration-300 rounded-sm"
-          >
-            Book Consultation
-          </Link>
+          <div className="hidden lg:flex items-center gap-3">
+            <Link
+              to="/company-profile"
+              className="inline-flex items-center gap-2 border-2 border-secondary text-secondary px-5 py-2.5 text-xs font-semibold tracking-wider uppercase hover:bg-secondary hover:text-secondary-foreground transition-all duration-300 rounded-sm"
+            >
+              View Profile
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-block bg-secondary text-secondary-foreground px-5 py-2.5 text-xs font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-secondary/30 transition-all duration-300 rounded-sm"
+            >
+              Book Consultation
+            </Link>
+          </div>
           <button className="lg:hidden text-heading p-1" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
