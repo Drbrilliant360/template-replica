@@ -2,6 +2,8 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
 import OptimizedImage from "@/components/OptimizedImage";
+import SEOHead from "@/components/SEOHead";
+import JsonLd, { breadcrumbSchema } from "@/components/JsonLd";
 import { Shield, Eye, FileCheck, Users, Heart, Target, TrendingUp, Award, Globe, CheckCircle } from "lucide-react";
 import aboutTeam from "@/assets/about-team.jpg";
 import aboutHandshake from "@/assets/about-handshake.jpg";
@@ -30,6 +32,8 @@ const stats = [
 
 const AboutPage = () => (
   <div className="min-h-screen">
+    <SEOHead title="Who We Are" description="Learn about Tanzania Advisory Partners — a boutique advisory firm supporting foreign investors with regulatory, immigration, and corporate coordination in Tanzania." path="/about" />
+    <JsonLd data={breadcrumbSchema([{ name: "Home", url: "https://tanzaniaadvisorypartners.com" }, { name: "Who We Are", url: "https://tanzaniaadvisorypartners.com/about" }])} />
     <Navbar />
 
     {/* Hero Banner */}

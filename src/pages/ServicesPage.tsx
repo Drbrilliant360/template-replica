@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
+import SEOHead from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { Shield, Building2, FileCheck, Globe, Home, Package, AlertTriangle, Users, Plane, Crown, Star, ArrowRight } from "lucide-react";
 
@@ -20,6 +21,7 @@ const services = [
 
 const ServicesPage = () => (
   <div className="min-h-screen">
+    <SEOHead title="Our Services" description="Explore Tanzania Advisory Partners' services: immigration advisory, business registration, licensing, investment entry, customs support, and more." path="/services" />
     <Navbar />
     <section className="bg-primary py-20 text-center">
       <div className="container mx-auto">
