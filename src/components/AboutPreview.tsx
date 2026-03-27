@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const AboutPreview = () => (
   <section className="section-padding section-bg">
@@ -14,28 +15,24 @@ const AboutPreview = () => (
         </p>
         <Link
           to="/about"
-          className="inline-block bg-primary text-primary-foreground px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-110 transition-all rounded-sm"
+          className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 rounded-sm"
         >
           Learn More About Us
+          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Link>
       </div>
       <div className="grid grid-cols-2 gap-4">
-        <div className="bg-background p-6 rounded-sm shadow-sm border border-border">
-          <span className="text-3xl font-heading font-bold text-primary">10+</span>
-          <p className="text-sm text-body mt-2">Service Areas</p>
-        </div>
-        <div className="bg-background p-6 rounded-sm shadow-sm border border-border">
-          <span className="text-3xl font-heading font-bold text-primary">100%</span>
-          <p className="text-sm text-body mt-2">Compliance Focus</p>
-        </div>
-        <div className="bg-background p-6 rounded-sm shadow-sm border border-border">
-          <span className="text-3xl font-heading font-bold text-primary">5+</span>
-          <p className="text-sm text-body mt-2">Industry Sectors</p>
-        </div>
-        <div className="bg-background p-6 rounded-sm shadow-sm border border-border">
-          <span className="text-3xl font-heading font-bold text-primary">24/7</span>
-          <p className="text-sm text-body mt-2">Client Support</p>
-        </div>
+        {[
+          { val: "10+", label: "Service Areas" },
+          { val: "100%", label: "Compliance Focus" },
+          { val: "5+", label: "Industry Sectors" },
+          { val: "24/7", label: "Client Support" },
+        ].map((s, i) => (
+          <div key={i} className="bg-background p-6 rounded-sm shadow-sm border border-border hover:shadow-md hover:border-primary/30 transition-all duration-300">
+            <span className="text-3xl font-heading font-bold text-primary">{s.val}</span>
+            <p className="text-sm text-body mt-2">{s.label}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>

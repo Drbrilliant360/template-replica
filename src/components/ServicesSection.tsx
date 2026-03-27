@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Shield, Building2, FileCheck, Globe, Home, Package, AlertTriangle, Users, Plane, Crown } from "lucide-react";
+import { Shield, Building2, FileCheck, Globe, Home, Package, AlertTriangle, Users, Plane, Crown, ArrowRight } from "lucide-react";
 
 const services = [
   { icon: Shield, title: "Immigration & Permit Advisory", desc: "Visa guidance, work permits, residence permits, and compliance support." },
@@ -23,8 +23,10 @@ const ServicesSection = () => (
     </div>
     <div className="container mx-auto grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
       {services.map((s, i) => (
-        <div key={i} className="bg-background border border-border p-6 rounded-sm text-center group hover:shadow-lg hover:border-primary/30 transition-all duration-300">
-          <s.icon className="h-9 w-9 mx-auto mb-4 text-primary stroke-[1.5] group-hover:scale-110 transition-transform" />
+        <div key={i} className="bg-background border border-border p-6 rounded-sm text-center group hover:shadow-xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 cursor-default">
+          <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+            <s.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground stroke-[1.5] transition-colors duration-300" />
+          </div>
           <h3 className="text-sm font-semibold mb-2 leading-tight">{s.title}</h3>
           <p className="text-xs leading-relaxed text-body">{s.desc}</p>
         </div>
@@ -33,9 +35,10 @@ const ServicesSection = () => (
     <div className="container mx-auto text-center mt-10">
       <Link
         to="/services"
-        className="inline-block bg-primary text-primary-foreground px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-110 transition-all rounded-sm"
+        className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 rounded-sm"
       >
         Explore All Services
+        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
       </Link>
     </div>
   </section>
