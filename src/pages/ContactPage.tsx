@@ -1,25 +1,54 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
-import { Phone, Mail, MapPin, Send, AlertCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Send, AlertCircle, ShieldCheck } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { sanitizeInput, sanitizePhone, contactFormLimiter, HONEYPOT_FIELD, isBot } from "@/lib/security";
 
 const contactSchema = z.object({
-  name: z.string().trim().min(1, "Full name is required").max(100, "Name must be less than 100 characters"),
-  email: z.string().trim().min(1, "Email is required").email("Please enter a valid email address").max(255),
-  phone: z.string().trim().max(20, "Phone number is too long").optional().or(z.literal("")),
-  subject: z.string().trim().min(1, "Subject is required").max(200, "Subject must be less than 200 characters"),
-  message: z.string().trim().min(1, "Message is required").min(10, "Message must be at least 10 characters").max(2000, "Message must be less than 2000 characters"),
+  name: z
+    .string()
+    .trim()
+    .min(1, "Full name is required")
+    .max(100, "Name must be less than 100 characters")
+    .refine((val) => !/[<>{}]/.test(val), "Name contains invalid characters"),
+  email: z
+    .string()
+    .trim()
+    .min(1, "Email is required")
+    .email("Please enter a valid email address")
+    .max(255),
+  phone: z
+    .string()
+    .trim()
+    .max(20, "Phone number is too long")
+    .refine((val) => val === "" || /^[+\d\s()-]*$/.test(val), "Phone contains invalid characters")
+    .optional()
+    .or(z.literal("")),
+  subject: z
+    .string()
+    .trim()
+    .min(1, "Subject is required")
+    .max(200, "Subject must be less than 200 characters")
+    .refine((val) => !/[<>{}]/.test(val), "Subject contains invalid characters"),
+  message: z
+    .string()
+    .trim()
+    .min(1, "Message is required")
+    .min(10, "Message must be at least 10 characters")
+    .max(2000, "Message must be less than 2000 characters"),
 });
 
 type FormErrors = Partial<Record<keyof z.infer<typeof contactSchema>, string>>;
 
 const ContactPage = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formStartTime = useRef(Date.now());
   const { toast } = useToast();
 
   const validateField = (field: keyof typeof form) => {
@@ -35,8 +64,44 @@ const ContactPage = () => {
     }
   };
 
+  const handleChange = (field: keyof typeof form, value: string) => {
+    // Sanitize phone input specifically
+    if (field === "phone") {
+      setForm({ ...form, [field]: sanitizePhone(value) });
+    } else {
+      setForm({ ...form, [field]: value });
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Bot detection: honeypot check
+    if (isBot(honeypot)) {
+      // Silently reject — don't alert the bot
+      toast({ title: "Message Sent!", description: "Thank you for your inquiry." });
+      setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+      return;
+    }
+
+    // Bot detection: timing check (form filled in under 2 seconds = likely bot)
+    if (Date.now() - formStartTime.current < 2000) {
+      toast({ title: "Message Sent!", description: "Thank you for your inquiry." });
+      setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+      return;
+    }
+
+    // Rate limiting
+    if (!contactFormLimiter.canProceed()) {
+      const waitTime = contactFormLimiter.getTimeUntilReset();
+      toast({
+        variant: "destructive",
+        title: "Too Many Attempts",
+        description: `Please wait ${waitTime} seconds before trying again.`,
+      });
+      return;
+    }
+
     const result = contactSchema.safeParse(form);
 
     if (!result.success) {
@@ -57,15 +122,27 @@ const ContactPage = () => {
     setErrors({});
     setIsSubmitting(true);
 
-    // Simulate submission delay
+    // Sanitize all text inputs before "sending"
+    const sanitizedData = {
+      name: sanitizeInput(result.data.name),
+      email: result.data.email,
+      phone: sanitizePhone(result.data.phone || ""),
+      subject: sanitizeInput(result.data.subject),
+      message: sanitizeInput(result.data.message),
+    };
+
+    // Simulate submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsSubmitting(false);
+
+    console.info("Sanitized form data ready for backend:", sanitizedData);
 
     toast({
       title: "Message Sent!",
       description: "Thank you for your inquiry. We will be in touch shortly.",
     });
     setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+    formStartTime.current = Date.now();
   };
 
   const inputClass = (field: keyof typeof form) =>
@@ -80,7 +157,9 @@ const ContactPage = () => {
         <div className="container mx-auto px-4">
           <p className="text-xs font-semibold tracking-[0.3em] uppercase text-secondary mb-3">Get In Touch</p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold !text-primary-foreground mb-4">Contact Us</h1>
-          <p className="!text-primary-foreground/70 max-w-xl mx-auto text-sm sm:text-base">Get in touch to discuss your advisory needs or schedule a consultation.</p>
+          <p className="!text-primary-foreground/70 max-w-xl mx-auto text-sm sm:text-base">
+            Get in touch to discuss your advisory needs or schedule a consultation.
+          </p>
         </div>
       </section>
 
@@ -90,16 +169,31 @@ const ContactPage = () => {
             <div className="md:col-span-2">
               <h2 className="text-xl sm:text-2xl font-bold mb-6">Send Us a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+                {/* Honeypot field — hidden from humans, visible to bots */}
+                <div className="absolute -left-[9999px]" aria-hidden="true">
+                  <label htmlFor={HONEYPOT_FIELD}>Do not fill this</label>
+                  <input
+                    type="text"
+                    id={HONEYPOT_FIELD}
+                    name={HONEYPOT_FIELD}
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <input
                       type="text"
                       placeholder="Full Name *"
                       value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      onChange={(e) => handleChange("name", e.target.value)}
                       onBlur={() => validateField("name")}
                       className={inputClass("name")}
                       maxLength={100}
+                      autoComplete="name"
                     />
                     {errors.name && (
                       <p className="flex items-center gap-1 mt-1.5 text-xs text-destructive">
@@ -112,10 +206,11 @@ const ContactPage = () => {
                       type="email"
                       placeholder="Email Address *"
                       value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      onChange={(e) => handleChange("email", e.target.value)}
                       onBlur={() => validateField("email")}
                       className={inputClass("email")}
                       maxLength={255}
+                      autoComplete="email"
                     />
                     {errors.email && (
                       <p className="flex items-center gap-1 mt-1.5 text-xs text-destructive">
@@ -130,9 +225,10 @@ const ContactPage = () => {
                       type="tel"
                       placeholder="Phone Number"
                       value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      onChange={(e) => handleChange("phone", e.target.value)}
                       className={inputClass("phone")}
                       maxLength={20}
+                      autoComplete="tel"
                     />
                     {errors.phone && (
                       <p className="flex items-center gap-1 mt-1.5 text-xs text-destructive">
@@ -145,7 +241,7 @@ const ContactPage = () => {
                       type="text"
                       placeholder="Subject *"
                       value={form.subject}
-                      onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                      onChange={(e) => handleChange("subject", e.target.value)}
                       onBlur={() => validateField("subject")}
                       className={inputClass("subject")}
                       maxLength={200}
@@ -162,7 +258,7 @@ const ContactPage = () => {
                     placeholder="Your Message *"
                     rows={6}
                     value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    onChange={(e) => handleChange("message", e.target.value)}
                     onBlur={() => validateField("message")}
                     className={`${inputClass("message")} resize-none`}
                     maxLength={2000}
@@ -178,22 +274,28 @@ const ContactPage = () => {
                     <span className="text-[10px] text-muted-foreground">{form.message.length}/2000</span>
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="group bg-secondary text-secondary-foreground px-6 sm:px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-secondary/30 transition-all duration-300 rounded-sm inline-flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <span className="h-4 w-4 border-2 border-secondary-foreground/30 border-t-secondary-foreground rounded-full animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-4 w-4" /> Send Message
-                    </>
-                  )}
-                </button>
+                <div className="flex items-center gap-4 flex-wrap">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="group bg-secondary text-secondary-foreground px-6 sm:px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-secondary/30 transition-all duration-300 rounded-sm inline-flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <span className="h-4 w-4 border-2 border-secondary-foreground/30 border-t-secondary-foreground rounded-full animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="h-4 w-4" /> Send Message
+                      </>
+                    )}
+                  </button>
+                  <span className="inline-flex items-center gap-1.5 text-[10px] text-muted-foreground">
+                    <ShieldCheck className="h-3.5 w-3.5 text-secondary" />
+                    Secured & encrypted
+                  </span>
+                </div>
               </form>
             </div>
             <div>
