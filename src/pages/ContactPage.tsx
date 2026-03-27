@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
+import SEOHead from "@/components/SEOHead";
 import { Phone, Mail, MapPin, Send, AlertCircle, ShieldCheck } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
