@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
+import OptimizedImage from "@/components/OptimizedImage";
 import { Shield, Eye, FileCheck, Users, Heart, Target, TrendingUp, Award, Globe, CheckCircle } from "lucide-react";
 import aboutTeam from "@/assets/about-team.jpg";
 import aboutHandshake from "@/assets/about-handshake.jpg";
@@ -31,10 +32,10 @@ const AboutPage = () => (
   <div className="min-h-screen">
     <Navbar />
 
-    {/* Hero Banner with Background Image */}
+    {/* Hero Banner */}
     <section className="relative py-28 md:py-36 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={aboutTeam} alt="Tanzania Advisory Partners team" className="w-full h-full object-cover" />
+        <img src={aboutTeam} alt="" className="w-full h-full object-cover" loading="eager" decoding="async" />
         <div className="absolute inset-0 bg-primary/90" />
       </div>
       <div className="container mx-auto relative z-10 text-center">
@@ -46,7 +47,7 @@ const AboutPage = () => (
       </div>
     </section>
 
-    {/* Company Overview - Split Layout */}
+    {/* Company Overview */}
     <FadeInSection>
       <section className="section-padding">
         <div className="container mx-auto">
@@ -61,12 +62,7 @@ const AboutPage = () => (
                 We bridge the gap between international business standards and Tanzanian regulatory requirements, providing structured guidance through every stage of market entry and ongoing operations.
               </p>
               <div className="grid grid-cols-2 gap-4">
-                {[
-                  "Regulatory Guidance",
-                  "Immigration Support",
-                  "Corporate Setup",
-                  "Compliance Advisory",
-                ].map((item) => (
+                {["Regulatory Guidance", "Immigration Support", "Corporate Setup", "Compliance Advisory"].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-secondary flex-shrink-0" />
                     <span className="text-sm font-medium text-heading">{item}</span>
@@ -76,7 +72,7 @@ const AboutPage = () => (
             </div>
             <div className="relative">
               <div className="rounded-sm overflow-hidden shadow-2xl">
-                <img src={aboutHandshake} alt="Professional partnership" className="w-full h-[400px] object-cover" />
+                <OptimizedImage src={aboutHandshake} alt="Professional partnership" className="w-full h-[400px] object-cover" />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-secondary text-secondary-foreground p-6 rounded-sm shadow-lg hidden md:block">
                 <p className="text-3xl font-heading font-bold">12+</p>
@@ -102,7 +98,7 @@ const AboutPage = () => (
       </section>
     </FadeInSection>
 
-    {/* Vision & Mission - Card Style */}
+    {/* Vision & Mission */}
     <FadeInSection>
       <section className="section-padding section-bg">
         <div className="container mx-auto">
@@ -155,7 +151,7 @@ const AboutPage = () => (
       </section>
     </FadeInSection>
 
-    {/* How We Work - Process Steps */}
+    {/* How We Work */}
     <FadeInSection>
       <section className="section-padding section-bg">
         <div className="container mx-auto">
@@ -181,11 +177,11 @@ const AboutPage = () => (
       </section>
     </FadeInSection>
 
-    {/* Operating Philosophy Quote */}
+    {/* Philosophy Quote */}
     <FadeInSection>
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={aboutTeam} alt="" className="w-full h-full object-cover" />
+          <img src={aboutTeam} alt="" className="w-full h-full object-cover" loading="lazy" decoding="async" />
           <div className="absolute inset-0 bg-primary/90" />
         </div>
         <div className="container mx-auto relative z-10 text-center max-w-3xl">
