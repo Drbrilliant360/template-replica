@@ -15,6 +15,7 @@ const clientTypes = [
 
 const ClientsPage = () => (
   <div className="min-h-screen">
+    <SEOHead title="Who We Work With" description="Tanzania Advisory Partners serves foreign investors, international companies, SMEs, NGOs, and expatriate families operating in Tanzania." path="/clients" />
     <Navbar />
     <section className="bg-primary py-20 text-center">
       <div className="container mx-auto">

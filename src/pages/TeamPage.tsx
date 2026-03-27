@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 
 const TeamPage = () => (
   <div className="min-h-screen">
+    <SEOHead title="Our Team" description="Meet the advisory team at Tanzania Advisory Partners — licensed professionals in legal, regulatory, and compliance services." path="/team" />
     <Navbar />
     <section className="bg-primary py-20 text-center">
       <div className="container mx-auto">
