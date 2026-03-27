@@ -9,18 +9,19 @@ import PrinciplesSection from "@/components/PrinciplesSection";
 import TeamPreview from "@/components/TeamPreview";
 import CtaBanner from "@/components/CtaBanner";
 import FooterSection from "@/components/FooterSection";
+import FadeInSection from "@/components/FadeInSection";
 
 const Index = () => (
   <div className="min-h-screen">
     <Navbar />
     <HeroSection />
-    <AboutPreview />
-    <ServicesSection />
-    <WhyChooseUs />
-    <WhoWeWorkWith />
-    <IndustriesSection />
-    <PrinciplesSection />
-    <TeamPreview />
+    <FadeInSection><AboutPreview /></FadeInSection>
+    <FadeInSection><ServicesSection /></FadeInSection>
+    <FadeInSection><WhyChooseUs /></FadeInSection>
+    <FadeInSection><WhoWeWorkWith /></FadeInSection>
+    <FadeInSection><IndustriesSection /></FadeInSection>
+    <FadeInSection><PrinciplesSection /></FadeInSection>
+    <FadeInSection><TeamPreview /></FadeInSection>
     <CtaBanner />
     <FooterSection />
   </div>
