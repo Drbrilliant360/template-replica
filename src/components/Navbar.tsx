@@ -16,9 +16,9 @@ const TopBar = () => (
   <div className="bg-primary text-primary-foreground">
     <div className="container mx-auto flex items-center justify-between px-4 py-2 text-xs">
       <div className="flex items-center gap-4 md:gap-6">
-        <a href="tel:+255123456789" className="flex items-center gap-1.5">
+        <a href="tel:+255655641642" className="flex items-center gap-1.5">
           <Phone className="h-3 w-3 text-secondary" />
-          <span className="hidden xs:inline">+255 123 456 789</span>
+          <span className="hidden xs:inline">+255 655 641 642</span>
         </a>
         <a href="mailto:info@tanzaniaadvisory.co.tz" className="hidden md:flex items-center gap-1.5">
           <Mail className="h-3 w-3 text-secondary" /> info@tanzaniaadvisory.co.tz

@@ -32,7 +32,7 @@ export const organizationSchema = {
   description:
     "Boutique advisory firm providing regulatory, immigration, and corporate coordination support for foreign investors and organizations operating in Tanzania.",
   url: "https://tanzaniaadvisorypartners.com",
-  telephone: "+255123456789",
+  telephone: "+255655641642",
   email: "info@tanzaniaadvisory.co.tz",
   address: {
     "@type": "PostalAddress",
