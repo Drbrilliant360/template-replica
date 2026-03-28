@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
 import SEOHead from "@/components/SEOHead";
-import { Phone, Mail, MapPin, Send, AlertCircle, ShieldCheck } from "lucide-react";
+import { Phone, Mail, MapPin, Send, AlertCircle, ShieldCheck, Globe } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { sanitizeInput, sanitizePhone, contactFormLimiter, HONEYPOT_FIELD, isBot } from "@/lib/security";
