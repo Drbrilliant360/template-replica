@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
 import SEOHead from "@/components/SEOHead";
-import { Phone, Mail, MapPin, Send, AlertCircle, ShieldCheck } from "lucide-react";
+import { Phone, Mail, MapPin, Send, AlertCircle, ShieldCheck, Globe } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { sanitizeInput, sanitizePhone, contactFormLimiter, HONEYPOT_FIELD, isBot } from "@/lib/security";
@@ -328,6 +328,15 @@ const ContactPage = () => {
                   <div>
                     <h4 className="text-sm font-semibold mb-1">Email</h4>
                     <p className="text-sm text-body break-all">info@tanzaniaadvisory.co.tz</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Globe className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold mb-1">Website</h4>
+                    <a href="https://www.tap.co.tz" target="_blank" rel="noopener noreferrer" className="text-sm text-secondary hover:underline">www.tap.co.tz</a>
                   </div>
                 </div>
               </div>

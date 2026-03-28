@@ -33,7 +33,7 @@ const stats = [
 const AboutPage = () => (
   <div className="min-h-screen">
     <SEOHead title="Who We Are" description="Learn about Tanzania Advisory Partners — a boutique advisory firm supporting foreign investors with regulatory, immigration, and corporate coordination in Tanzania." path="/about" />
-    <JsonLd data={breadcrumbSchema([{ name: "Home", url: "https://tanzaniaadvisorypartners.com" }, { name: "Who We Are", url: "https://tanzaniaadvisorypartners.com/about" }])} />
+    <JsonLd data={breadcrumbSchema([{ name: "Home", url: "https://www.tap.co.tz" }, { name: "Who We Are", url: "https://www.tap.co.tz/about" }])} />
     <Navbar />
 
     {/* Hero Banner */}

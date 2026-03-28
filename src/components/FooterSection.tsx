@@ -1,4 +1,4 @@
-import { Send, Phone, Mail, MapPin } from "lucide-react";
+import { Send, Phone, Mail, MapPin, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.jpg";
 
@@ -43,6 +43,10 @@ const FooterSection = () => (
           <li className="flex items-center gap-2">
             <Mail className="h-4 w-4 flex-shrink-0 text-secondary" />
             <span className="break-all">info@tanzaniaadvisory.co.tz</span>
+          </li>
+          <li className="flex items-center gap-2">
+            <Globe className="h-4 w-4 flex-shrink-0 text-secondary" />
+            <a href="https://www.tap.co.tz" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">www.tap.co.tz</a>
           </li>
         </ul>
       </div>
