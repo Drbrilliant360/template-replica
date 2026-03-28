@@ -330,6 +330,15 @@ const ContactPage = () => {
                     <p className="text-sm text-body break-all">info@tanzaniaadvisory.co.tz</p>
                   </div>
                 </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Globe className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold mb-1">Website</h4>
+                    <a href="https://www.tap.co.tz" target="_blank" rel="noopener noreferrer" className="text-sm text-secondary hover:underline">www.tap.co.tz</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
