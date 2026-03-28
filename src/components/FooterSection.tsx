@@ -38,7 +38,7 @@ const FooterSection = () => (
           </li>
           <li className="flex items-center gap-2">
             <Phone className="h-4 w-4 flex-shrink-0 text-secondary" />
-            +255 123 456 789
+            +255 655 641 642
           </li>
           <li className="flex items-center gap-2">
             <Mail className="h-4 w-4 flex-shrink-0 text-secondary" />
