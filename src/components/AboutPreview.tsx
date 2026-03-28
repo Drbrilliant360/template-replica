@@ -5,14 +5,14 @@ import OptimizedImage from "@/components/OptimizedImage";
 
 const AboutPreview = () => (
   <section className="section-padding section-bg">
-    <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-      <div>
+    <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 md:gap-10 items-start">
+      <div className="md:py-4">
         <p className="text-xs font-semibold tracking-[0.3em] uppercase text-secondary mb-3">About the Firm</p>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">Who We Are</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-5">Who We Are</h2>
         <p className="text-sm sm:text-base text-body leading-relaxed mb-3 md:mb-4">
           Tanzania Advisory Partners is a boutique advisory firm providing regulatory, immigration, and corporate coordination support for foreign investors and organizations operating in Tanzania.
         </p>
-        <p className="text-sm sm:text-base text-body leading-relaxed mb-6 md:mb-8">
+        <p className="text-sm sm:text-base text-body leading-relaxed mb-5 md:mb-6">
           We bridge the gap between international business standards and local regulatory requirements, offering structured guidance every step of the way.
         </p>
         <Link
@@ -24,7 +24,7 @@ const AboutPreview = () => (
         </Link>
       </div>
       <div className="space-y-4">
-        <OptimizedImage src={aboutHandshake} alt="Business partnership in Tanzania" className="w-full rounded-sm shadow-lg" width={1280} height={720} />
+        <OptimizedImage src={aboutHandshake} alt="Business partnership in Tanzania" className="w-full h-56 md:h-64 object-cover rounded-sm shadow-lg" width={640} height={360} />
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {[
             { val: "10+", label: "Service Areas" },
