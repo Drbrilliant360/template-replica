@@ -1,12 +1,12 @@
 import { Send, Phone, Mail, MapPin, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo-footer.png";
 
 const FooterSection = () => (
   <footer className="bg-primary pt-12 sm:pt-16 pb-8">
     <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-10 sm:mb-12">
       <div className="sm:col-span-2 lg:col-span-1">
-        <img src={logo} alt="Tanzania Advisory Partners" className="h-14 sm:h-16 w-auto mb-4 rounded-sm bg-white p-1.5" />
+        <img src={logo} alt="Tanzania Advisory Partners" className="h-12 sm:h-14 md:h-16 w-auto max-w-[200px] sm:max-w-[240px] mb-4 rounded-sm bg-white p-2 object-contain" />
         <p className="text-sm !text-primary-foreground/60 leading-relaxed">
           Structured advisory and coordination services for investors, businesses, and expatriates operating in Tanzania.
         </p>
