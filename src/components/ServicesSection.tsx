@@ -16,26 +16,26 @@ const services = [
 
 const ServicesSection = () => (
   <section className="section-padding">
-    <div className="container mx-auto px-4 text-center mb-10 md:mb-16">
-      <p className="text-xs font-semibold tracking-[0.3em] uppercase text-secondary mb-3">What We Do</p>
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Our Expertise</h2>
-      <p className="text-sm sm:text-base text-body max-w-xl mx-auto">Comprehensive advisory services tailored for foreign investors and organisations operating in Tanzania.</p>
+    <div className="container mx-auto px-4 sm:px-6 text-center mb-12 md:mb-16">
+      <p className="section-label">What We Do</p>
+      <h2 className="section-title">Our Expertise</h2>
+      <p className="section-desc">Comprehensive advisory services tailored for foreign investors and organisations operating in Tanzania.</p>
     </div>
-    <div className="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
+    <div className="container mx-auto px-4 sm:px-6 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
       {services.map((s, i) => (
-        <div key={i} className="bg-background border border-border p-4 sm:p-6 rounded-sm text-center group hover:shadow-xl hover:border-secondary/40 hover:-translate-y-1 transition-all duration-300 cursor-default">
-          <div className="w-10 h-10 sm:w-14 sm:h-14 mx-auto mb-3 sm:mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
-            <s.icon className="h-5 w-5 sm:h-7 sm:w-7 text-primary group-hover:text-secondary-foreground stroke-[1.5] transition-colors duration-300" />
+        <div key={i} className="bg-background border border-border p-5 sm:p-7 rounded text-center group hover:shadow-xl hover:border-secondary/30 hover:-translate-y-1 transition-all duration-300 cursor-default">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 rounded-full bg-primary/8 flex items-center justify-center group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
+            <s.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary group-hover:text-secondary-foreground stroke-[1.5] transition-colors duration-300" />
           </div>
-          <h3 className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 leading-tight">{s.title}</h3>
-          <p className="text-[10px] sm:text-xs leading-relaxed text-body hidden sm:block">{s.desc}</p>
+          <h3 className="text-[13px] sm:text-sm font-semibold mb-2 leading-snug font-body">{s.title}</h3>
+          <p className="text-[11px] sm:text-xs leading-relaxed text-body hidden sm:block">{s.desc}</p>
         </div>
       ))}
     </div>
-    <div className="container mx-auto px-4 text-center mt-8 md:mt-10">
+    <div className="container mx-auto px-4 text-center mt-10 md:mt-14">
       <Link
         to="/services"
-        className="group inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-6 sm:px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-secondary/30 transition-all duration-300 rounded-sm"
+        className="group inline-flex items-center gap-2.5 bg-secondary text-secondary-foreground px-7 sm:px-9 py-3.5 text-[13px] font-semibold tracking-[0.15em] uppercase hover:brightness-110 hover:shadow-lg hover:shadow-secondary/25 transition-all duration-300 rounded"
       >
         Explore All Services
         <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
