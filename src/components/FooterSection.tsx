@@ -9,9 +9,8 @@ const FooterSection = () => (
         <img
           src={logo}
           alt="Tanzania Advisory Partners"
-          className="h-17 sm:h-16 w-auto mb-4 rounded-sm bg-white p-1.5"
-        />
-        <p className="text-sm !text-primary-foreground/60 leading-relaxed">
+          className="h-17 w-auto mb-2 rounded-sm bg-white p-1.5"
+        /     <p className="text-sm !text-primary-foreground/60 leading-relaxed">
           Structured advisory and coordination services for investors, businesses, and expatriates operating in
           Tanzania.
         </p>
