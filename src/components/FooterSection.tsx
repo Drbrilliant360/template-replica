@@ -6,7 +6,7 @@ const FooterSection = () => (
   <footer className="bg-primary pt-14 sm:pt-20 pb-8">
     <div className="container mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-14">
       <div className="sm:col-span-2 lg:col-span-1">
-        <img src={logo} alt="Tanzania Advisory Partners" className="h-12 sm:h-14 md:h-16 w-auto max-w-[200px] sm:max-w-[240px] mb-5 object-contain" />
+        <img src={logo} alt="Tanzania Advisory Partners" className="h-16 sm:h-20 md:h-24 w-auto max-w-[240px] sm:max-w-[300px] mb-5 object-contain" />
         <p className="text-sm !text-primary-foreground/60 leading-relaxed">
           Structured advisory and coordination services for investors, businesses, and expatriates operating in Tanzania.
         </p>
