@@ -14,7 +14,7 @@ const navLinks = [
 
 const TopBar = () => (
   <div className="bg-primary text-primary-foreground">
-    <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-2 text-xs tracking-wide">
+    <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-1 text-xs tracking-wide">
       <div className="flex items-center gap-4 md:gap-6">
         <a href="tel:+255655641642" className="flex items-center gap-1.5 hover:text-secondary transition-colors">
           <Phone className="h-3 w-3 text-secondary" />
