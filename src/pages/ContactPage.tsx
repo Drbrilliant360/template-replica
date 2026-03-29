@@ -318,7 +318,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold mb-1">Phone</h4>
-                    <p className="text-sm text-body">+255 655 641 642</p>
+                    <p className="text-sm text-body">+255-655-641-642</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
