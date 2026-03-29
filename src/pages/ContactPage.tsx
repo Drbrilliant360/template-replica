@@ -327,7 +327,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold mb-1">Email</h4>
-                    <p className="text-sm text-body break-all">info@tanzaniaadvisory.co.tz</p>
+                    <p className="text-sm text-body break-all">info@tanzaniaadvisorypartners.co.tz</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
