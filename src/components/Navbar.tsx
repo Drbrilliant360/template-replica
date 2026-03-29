@@ -18,10 +18,10 @@ const TopBar = () => (
       <div className="flex items-center gap-4 md:gap-6">
         <a href="tel:+255655641642" className="flex items-center gap-1.5 hover:text-secondary transition-colors">
           <Phone className="h-3 w-3 text-secondary" />
-          <span className="hidden xs:inline">+255 655 641 642</span>
+          <span className="hidden xs:inline">+255-655-641-642</span>
         </a>
-        <a href="mailto:info@tanzaniaadvisory.co.tz" className="hidden md:flex items-center gap-1.5 hover:text-secondary transition-colors">
-          <Mail className="h-3 w-3 text-secondary" /> info@tanzaniaadvisory.co.tz
+        <a href="mailto:info@tanzaniaadvisorypartners.co.tz" className="hidden md:flex items-center gap-1.5 hover:text-secondary transition-colors">
+          <Mail className="h-3 w-3 text-secondary" /> info@tanzaniaadvisorypartners.co.tz
         </a>
       </div>
       <span className="hidden sm:flex items-center gap-1.5">

@@ -31,9 +31,9 @@ export const organizationSchema = {
   name: "Tanzania Advisory Partners",
   description:
     "Boutique advisory firm providing regulatory, immigration, and corporate coordination support for foreign investors and organizations operating in Tanzania.",
-  url: "https://www.tap.co.tz",
+  url: "https://www.tanzaniaadvisorypartners.co.tz",
   telephone: "+255655641642",
-  email: "info@tanzaniaadvisory.co.tz",
+  email: "info@tanzaniaadvisorypartners.co.tz",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Dar es Salaam",

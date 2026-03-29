@@ -8,7 +8,7 @@ interface SEOHeadProps {
 }
 
 const SITE_NAME = "Tanzania Advisory Partners";
-const BASE_URL = "https://www.tap.co.tz";
+const BASE_URL = "https://www.tanzaniaadvisorypartners.co.tz";
 
 const SEOHead = ({ title, description, path = "", type = "website" }: SEOHeadProps) => {
   const fullTitle = path === "/" || path === "" ? title : `${title} | ${SITE_NAME}`;
