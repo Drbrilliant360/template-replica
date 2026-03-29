@@ -14,7 +14,7 @@ const navLinks = [
 
 const TopBar = () => (
   <div className="bg-primary text-primary-foreground">
-    <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-1 text-xs tracking-wide">
+    <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-0.5 text-xs tracking-wide">
       <div className="flex items-center gap-4 md:gap-6">
         <a href="tel:+255655641642" className="flex items-center gap-1.5 hover:text-secondary transition-colors">
           <Phone className="h-3 w-3 text-secondary" />
@@ -50,7 +50,7 @@ const Navbar = () => {
     <>
       <TopBar />
       <nav className={`sticky top-0 z-50 bg-background transition-all duration-300 ${scrolled ? "shadow-lg" : "border-b border-border"}`}>
-        <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-1 md:py-1.5">
+        <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-0.5">
           <Link to="/" className="flex items-center">
             <img src={logo} alt="Tanzania Advisory Partners" className="h-[88px] sm:h-[104px] md:h-[128px] w-auto max-w-[400px] sm:max-w-[520px] md:max-w-[600px] object-contain" />
           </Link>
