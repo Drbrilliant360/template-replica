@@ -318,7 +318,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold mb-1">Phone</h4>
-                    <p className="text-sm text-body">+255 655 641 642</p>
+                    <p className="text-sm text-body">+255-655-641-642</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -327,7 +327,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold mb-1">Email</h4>
-                    <p className="text-sm text-body break-all">info@tanzaniaadvisory.co.tz</p>
+                    <p className="text-sm text-body break-all">info@tanzaniaadvisorypartners.co.tz</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -336,7 +336,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold mb-1">Website</h4>
-                    <a href="https://www.tap.co.tz" target="_blank" rel="noopener noreferrer" className="text-sm text-secondary hover:underline">www.tap.co.tz</a>
+                    <a href="https://www.tanzaniaadvisorypartners.co.tz" target="_blank" rel="noopener noreferrer" className="text-sm text-secondary hover:underline">www.tanzaniaadvisorypartners.co.tz</a>
                   </div>
                 </div>
               </div>

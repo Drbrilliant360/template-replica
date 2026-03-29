@@ -38,15 +38,15 @@ const FooterSection = () => (
           </li>
           <li className="flex items-center gap-2.5">
             <Phone className="h-4 w-4 flex-shrink-0 text-secondary" />
-            +255 655 641 642
+            +255-655-641-642
           </li>
           <li className="flex items-center gap-2.5">
             <Mail className="h-4 w-4 flex-shrink-0 text-secondary" />
-            <span className="break-all">info@tanzaniaadvisory.co.tz</span>
+            <span className="break-all">info@tanzaniaadvisorypartners.co.tz</span>
           </li>
           <li className="flex items-center gap-2.5">
             <Globe className="h-4 w-4 flex-shrink-0 text-secondary" />
-            <a href="https://www.tap.co.tz" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors duration-200">www.tap.co.tz</a>
+            <a href="https://www.tanzaniaadvisorypartners.co.tz" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors duration-200">www.tanzaniaadvisorypartners.co.tz</a>
           </li>
         </ul>
       </div>
