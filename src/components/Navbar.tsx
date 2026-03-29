@@ -53,7 +53,7 @@ const Navbar = () => {
       <nav className={`sticky top-0 z-50 bg-background transition-shadow duration-300 ${scrolled ? "shadow-md" : "border-b border-border"}`}>
         <div className="container mx-auto flex items-center justify-between px-4 py-3 md:py-4">
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Tanzania Advisory Partners" className="h-10 md:h-12 w-auto" />
+            <img src={logo} alt="Tanzania Advisory Partners" className="h-9 sm:h-10 md:h-12 w-auto max-w-[180px] sm:max-w-[220px] md:max-w-[260px] object-contain" />
           </Link>
           <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
