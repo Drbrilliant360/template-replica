@@ -50,17 +50,17 @@ const FooterSection = () => (
           </li>
           <li className="flex items-center gap-2">
             <Mail className="h-4 w-4 flex-shrink-0 text-secondary" />
-            <span className="break-all">info@tanzaniaadvisory.co.tz</span>
+            <span className="break-all">info@tanzaniaadvisorypartners.co.tz</span>
           </li>
           <li className="flex items-center gap-2">
             <Globe className="h-4 w-4 flex-shrink-0 text-secondary" />
             <a
-              href="https://www.tap.co.tz"
+              href="https://www.tanzaniaadvisorypartners.co.tz"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-secondary transition-colors"
             >
-              www.tap.co.tz
+              www.tanzaniaadvisorypartners.co.tz
             </a>
           </li>
         </ul>
