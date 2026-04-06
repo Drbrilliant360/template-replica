@@ -5,7 +5,33 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import logo from "@/assets/logo.jpg";
 
-const FooterSection = () => (
+const FooterSection = () => {
+  const [email, setEmail] = useState("");
+  const [sending, setSending] = useState(false);
+  const { toast } = useToast();
+
+  const handleNewsletter = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast({ variant: "destructive", title: "Invalid Email", description: "Please enter a valid email." });
+      return;
+    }
+    setSending(true);
+    try {
+      const { error } = await supabase.functions.invoke("send-email", {
+        body: { type: "newsletter", email },
+      });
+      if (error) throw error;
+      toast({ title: "Subscribed!", description: "Thank you for subscribing." });
+      setEmail("");
+    } catch {
+      toast({ variant: "destructive", title: "Error", description: "Please try again later." });
+    } finally {
+      setSending(false);
+    }
+  };
+
+  return (
   <footer className="bg-primary pt-12 sm:pt-16 pb-8">
     <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-10 sm:mb-12">
       <div className="sm:col-span-2 lg:col-span-1">
