@@ -3,7 +3,7 @@ import { Send, Phone, Mail, MapPin, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo.png";
 
 const FooterSection = () => {
   const [email, setEmail] = useState("");
