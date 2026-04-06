@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
@@ -132,11 +133,35 @@ const ContactPage = () => {
       message: sanitizeInput(result.data.message),
     };
 
-    // Simulate submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
+    try {
+      const { data, error } = await supabase.functions.invoke("send-email", {
+        body: {
+          type: "contact",
+          ...sanitizedData,
+        },
+      });
 
-    console.info("Sanitized form data ready for backend:", sanitizedData);
+      setIsSubmitting(false);
+
+      if (error) {
+        console.error("Email send error:", error);
+        toast({
+          variant: "destructive",
+          title: "Failed to Send",
+          description: "Something went wrong. Please try again later.",
+        });
+        return;
+      }
+    } catch (err) {
+      setIsSubmitting(false);
+      console.error("Email send error:", err);
+      toast({
+        variant: "destructive",
+        title: "Failed to Send",
+        description: "Something went wrong. Please try again later.",
+      });
+      return;
+    }
 
     toast({
       title: "Message Sent!",
