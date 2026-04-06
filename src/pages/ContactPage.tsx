@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
