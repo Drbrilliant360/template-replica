@@ -115,6 +115,7 @@ const FooterSection = () => {
       <p className="text-xs !text-primary-foreground/40">© 2026 Tanzania Advisory Partners. All rights reserved.</p>
     </div>
   </footer>
-);
+  );
+};
 
 export default FooterSection;
