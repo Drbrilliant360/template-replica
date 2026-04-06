@@ -97,16 +97,18 @@ const FooterSection = () => {
       <div>
         <h4 className="font-heading text-lg font-semibold !text-primary-foreground mb-4">Newsletter</h4>
         <p className="text-sm !text-primary-foreground/60 mb-4">Stay informed on regulatory updates.</p>
-        <div className="flex">
+        <form onSubmit={handleNewsletter} className="flex">
           <input
             type="email"
             placeholder="Your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground text-sm px-3 sm:px-4 py-2.5 flex-1 min-w-0 placeholder:text-primary-foreground/40 focus:outline-none focus:border-secondary rounded-l-sm"
           />
-          <button className="bg-secondary text-secondary-foreground px-3 sm:px-4 hover:brightness-110 transition-all rounded-r-sm flex-shrink-0">
+          <button type="submit" disabled={sending} className="bg-secondary text-secondary-foreground px-3 sm:px-4 hover:brightness-110 transition-all rounded-r-sm flex-shrink-0 disabled:opacity-60">
             <Send className="h-4 w-4" />
           </button>
-        </div>
+        </form>
       </div>
     </div>
     <div className="container mx-auto px-4 border-t border-primary-foreground/10 pt-6 text-center">
