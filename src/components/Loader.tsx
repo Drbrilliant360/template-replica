@@ -1,4 +1,4 @@
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo.png";
 
 const Loader = () => (
   <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-primary">
