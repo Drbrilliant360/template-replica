@@ -17,6 +17,7 @@ const ClientsPage = lazy(() => import("./pages/ClientsPage"));
 const TeamPage = lazy(() => import("./pages/TeamPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const CompanyProfilePage = lazy(() => import("./pages/CompanyProfilePage"));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
