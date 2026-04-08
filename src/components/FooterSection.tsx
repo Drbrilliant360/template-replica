@@ -38,7 +38,7 @@ const FooterSection = () => {
         <img
           src={logo}
           alt="Tanzania Advisory Partners"
-          className="h-14 sm:h-16 w-auto mb-4 rounded-sm"
+          className="h-20 sm:h-24 w-auto mb-4 rounded-sm"
         />
         <p className="text-sm !text-primary-foreground/60 leading-relaxed">
           Structured advisory and coordination services for investors, businesses, and expatriates operating in
