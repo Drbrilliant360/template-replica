@@ -30,7 +30,7 @@ const App = () => (
       <ErrorBoundary>
         <BrowserRouter>
           <ScrollToTop />
-          <WhatsAppButton />
+          
           <CookieConsent />
           <Suspense fallback={<Loader />}>
             <Routes>
