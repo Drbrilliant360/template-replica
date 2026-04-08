@@ -41,6 +41,7 @@ const App = () => (
               <Route path="/team" element={<TeamPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/company-profile" element={<CompanyProfilePage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
