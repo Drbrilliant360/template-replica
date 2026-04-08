@@ -32,8 +32,8 @@ const CookieConsent = () => {
           <div className="flex-1 text-sm text-muted-foreground">
             <p>
               We use cookies to enhance your browsing experience and analyze site traffic. By clicking "Accept", you consent to our use of cookies.{" "}
-              <a href="/privacy" className="text-secondary underline hover:text-secondary/80 transition-colors">
-                Learn more
+              <a href="/privacy" className="text-secondary underline hover:text-secondary/80 transition-colors" onClick={(e) => { e.preventDefault(); window.location.href = '/privacy'; }}>
+                Privacy Policy
               </a>
             </p>
           </div>
