@@ -1,9 +1,10 @@
+import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const RESEND_API_URL = "https://api.resend.com/emails";
 const TO_EMAIL = "info@tanzaniaadvisorypartners.co.tz";
 
 Deno.serve(async (req) => {
@@ -12,40 +13,41 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-    if (!RESEND_API_KEY) {
-      throw new Error("RESEND_API_KEY is not configured");
+    const SMTP_HOST = Deno.env.get("SMTP_HOST");
+    const SMTP_PORT = Number(Deno.env.get("SMTP_PORT") || "465");
+    const SMTP_USER = Deno.env.get("SMTP_USER");
+    const SMTP_PASS = Deno.env.get("SMTP_PASS");
+
+    if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
+      throw new Error("SMTP credentials are not configured");
     }
 
     const body = await req.json();
     const { type } = body;
 
-    let emailPayload: { from: string; to: string[]; subject: string; html: string };
+    let subject: string;
+    let htmlContent: string;
 
     if (type === "contact") {
-      const { name, email, phone, subject, message } = body;
-      if (!name || !email || !subject || !message) {
+      const { name, email, phone, subject: formSubject, message } = body;
+      if (!name || !email || !formSubject || !message) {
         return new Response(
           JSON.stringify({ error: "Missing required fields" }),
           { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
         );
       }
 
-      emailPayload = {
-        from: "TAP Contact Form <onboarding@resend.dev>",
-        to: [TO_EMAIL],
-        subject: `Contact Form: ${subject}`,
-        html: `
-          <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-          <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-          <p><strong>Phone:</strong> ${escapeHtml(phone || "Not provided")}</p>
-          <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
-          <hr />
-          <p><strong>Message:</strong></p>
-          <p>${escapeHtml(message)}</p>
-        `,
-      };
+      subject = `Contact Form: ${formSubject}`;
+      htmlContent = `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Phone:</strong> ${escapeHtml(phone || "Not provided")}</p>
+        <p><strong>Subject:</strong> ${escapeHtml(formSubject)}</p>
+        <hr />
+        <p><strong>Message:</strong></p>
+        <p>${escapeHtml(message)}</p>
+      `;
     } else if (type === "newsletter") {
       const { email } = body;
       if (!email) {
@@ -55,16 +57,12 @@ Deno.serve(async (req) => {
         );
       }
 
-      emailPayload = {
-        from: "TAP Newsletter <onboarding@resend.dev>",
-        to: [TO_EMAIL],
-        subject: "New Newsletter Subscription",
-        html: `
-          <h2>New Newsletter Subscription</h2>
-          <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-          <p>This person would like to receive regulatory updates.</p>
-        `,
-      };
+      subject = "New Newsletter Subscription";
+      htmlContent = `
+        <h2>New Newsletter Subscription</h2>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p>This person would like to receive regulatory updates.</p>
+      `;
     } else {
       return new Response(
         JSON.stringify({ error: "Invalid type" }),
@@ -72,27 +70,30 @@ Deno.serve(async (req) => {
       );
     }
 
-    const res = await fetch(RESEND_API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${RESEND_API_KEY}`,
+    const client = new SMTPClient({
+      connection: {
+        hostname: SMTP_HOST,
+        port: SMTP_PORT,
+        tls: true,
+        auth: {
+          username: SMTP_USER,
+          password: SMTP_PASS,
+        },
       },
-      body: JSON.stringify(emailPayload),
     });
 
-    const data = await res.json();
+    await client.send({
+      from: SMTP_USER,
+      to: TO_EMAIL,
+      subject,
+      content: "Plain text fallback",
+      html: htmlContent,
+    });
 
-    if (!res.ok) {
-      console.error("Resend API error:", JSON.stringify(data));
-      return new Response(
-        JSON.stringify({ error: "Failed to send email", details: data }),
-        { status: res.status, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
+    await client.close();
 
     return new Response(
-      JSON.stringify({ success: true, id: data.id }),
+      JSON.stringify({ success: true }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error) {
