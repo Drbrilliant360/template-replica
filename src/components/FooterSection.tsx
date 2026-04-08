@@ -54,6 +54,7 @@ const FooterSection = () => {
             { label: "Services", path: "/services" },
             { label: "Who We Work With", path: "/clients" },
             { label: "Contact", path: "/contact" },
+            { label: "Privacy Policy", path: "/privacy" },
           ].map((link) => (
             <li key={link.path}>
               <Link
