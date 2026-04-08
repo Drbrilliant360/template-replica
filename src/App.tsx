@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "@/components/ScrollToTop";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import CookieConsent from "@/components/CookieConsent";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import Loader from "@/components/Loader";
 
@@ -29,6 +30,7 @@ const App = () => (
         <BrowserRouter>
           <ScrollToTop />
           <WhatsAppButton />
+          <CookieConsent />
           <Suspense fallback={<Loader />}>
             <Routes>
               <Route path="/" element={<Index />} />
