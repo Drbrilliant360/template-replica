@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
@@ -208,12 +209,12 @@ const AboutPage = () => (
           <p className="text-body leading-relaxed mb-8">
             Whether you're entering the Tanzanian market or expanding existing operations, our team is ready to guide you.
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-8 py-3 text-sm font-semibold tracking-wider uppercase hover:brightness-110 hover:shadow-lg hover:shadow-secondary/30 transition-all duration-300 rounded-sm"
           >
             Book a Consultation
-          </a>
+          </Link>
         </div>
       </section>
     </FadeInSection>
