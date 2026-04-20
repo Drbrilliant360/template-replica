@@ -4,6 +4,8 @@ import { FileText, Download, ExternalLink, BookOpen } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
+import SEOHead from "@/components/SEOHead";
+import JsonLd, { breadcrumbSchema } from "@/components/JsonLd";
 
 const CompanyProfilePage = () => {
   const [loading, setLoading] = useState(true);
