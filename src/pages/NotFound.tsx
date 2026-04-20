@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
+import SEOHead from "@/components/SEOHead";
 import { Home, ArrowLeft, Search } from "lucide-react";
 
 const NotFound = () => {
@@ -16,6 +17,11 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="Page Not Found (404)"
+        description="The page you're looking for doesn't exist. Return to Tanzania Advisory Partners' homepage for business advisory and consulting services in Tanzania."
+        path={location.pathname}
+      />
       <Navbar />
       <div className="flex-1 flex items-center justify-center px-4 py-20">
         <div className="text-center max-w-lg">
