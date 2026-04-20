@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
 import SEOHead from "@/components/SEOHead";
+import JsonLd, { breadcrumbSchema, contactPageSchema } from "@/components/JsonLd";
 import { Phone, Mail, MapPin, Send, AlertCircle, ShieldCheck, Globe } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
@@ -178,7 +179,13 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen">
-      <SEOHead title="Contact Us" description="Get in touch with Tanzania Advisory Partners. Schedule a consultation for regulatory, immigration, and business advisory services in Tanzania." path="/contact" />
+      <SEOHead
+        title="Contact Tanzania Advisory Partners — Dar es Salaam"
+        description="Contact our advisory team in Dar es Salaam, Tanzania. Schedule a consultation for regulatory, immigration, financial advisory and business consulting services."
+        path="/contact"
+      />
+      <JsonLd id="breadcrumb-contact" data={breadcrumbSchema([{ name: "Home", url: "https://www.tanzaniaadvisorypartners.co.tz/" }, { name: "Contact", url: "https://www.tanzaniaadvisorypartners.co.tz/contact" }])} />
+      <JsonLd id="contact-page" data={contactPageSchema} />
       <Navbar />
       <section className="bg-primary py-16 sm:py-20 text-center">
         <div className="container mx-auto px-4">
