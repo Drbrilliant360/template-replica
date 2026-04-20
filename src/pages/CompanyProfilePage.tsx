@@ -4,6 +4,8 @@ import { FileText, Download, ExternalLink, BookOpen } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
+import SEOHead from "@/components/SEOHead";
+import JsonLd, { breadcrumbSchema } from "@/components/JsonLd";
 
 const CompanyProfilePage = () => {
   const [loading, setLoading] = useState(true);
@@ -11,6 +13,12 @@ const CompanyProfilePage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="Company Profile — Tanzania Advisory Partners"
+        description="Download the Tanzania Advisory Partners company profile. Discover our regulatory, immigration and business advisory capabilities for investors in Tanzania."
+        path="/company-profile"
+      />
+      <JsonLd id="breadcrumb-profile" data={breadcrumbSchema([{ name: "Home", url: "https://www.tanzaniaadvisorypartners.co.tz/" }, { name: "Company Profile", url: "https://www.tanzaniaadvisorypartners.co.tz/company-profile" }])} />
       <Navbar />
 
       {/* Hero Banner */}

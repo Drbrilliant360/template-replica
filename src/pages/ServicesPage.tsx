@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
 import SEOHead from "@/components/SEOHead";
+import JsonLd, { breadcrumbSchema, servicesSchema } from "@/components/JsonLd";
 import { Link } from "react-router-dom";
 import { Shield, Building2, FileCheck, Globe, Home, Package, AlertTriangle, Users, Plane, Crown, Star, ArrowRight } from "lucide-react";
 
@@ -21,7 +22,13 @@ const services = [
 
 const ServicesPage = () => (
   <div className="min-h-screen">
-    <SEOHead title="Our Services" description="Explore Tanzania Advisory Partners' services: immigration advisory, business registration, licensing, investment entry, customs support, and more." path="/services" />
+    <SEOHead
+      title="Advisory & Consulting Services in Tanzania"
+      description="Business advisory and consulting services in Tanzania: immigration & work permits, business registration, licensing, investment entry, customs and corporate compliance in Dar es Salaam."
+      path="/services"
+    />
+    <JsonLd id="breadcrumb-services" data={breadcrumbSchema([{ name: "Home", url: "https://www.tanzaniaadvisorypartners.co.tz/" }, { name: "Services", url: "https://www.tanzaniaadvisorypartners.co.tz/services" }])} />
+    <JsonLd id="services-list" data={servicesSchema(services.map((s) => ({ name: s.title, description: s.desc })))} />
     <Navbar />
     <section className="bg-primary py-20 text-center">
       <div className="container mx-auto">

@@ -2,12 +2,18 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import FadeInSection from "@/components/FadeInSection";
 import SEOHead from "@/components/SEOHead";
+import JsonLd, { breadcrumbSchema } from "@/components/JsonLd";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const TeamPage = () => (
   <div className="min-h-screen">
-    <SEOHead title="Our Team" description="Meet the advisory team at Tanzania Advisory Partners — licensed professionals in legal, regulatory, and compliance services." path="/team" />
+    <SEOHead
+      title="Our Team — Licensed Advisors in Tanzania"
+      description="Meet the advisory team at Tanzania Advisory Partners — licensed legal, regulatory, immigration and compliance professionals serving clients across Tanzania."
+      path="/team"
+    />
+    <JsonLd id="breadcrumb-team" data={breadcrumbSchema([{ name: "Home", url: "https://www.tanzaniaadvisorypartners.co.tz/" }, { name: "Team", url: "https://www.tanzaniaadvisorypartners.co.tz/team" }])} />
     <Navbar />
     <section className="bg-primary py-20 text-center">
       <div className="container mx-auto">
